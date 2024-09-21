@@ -1,5 +1,3 @@
-
-
 class Category:
     name: str
     description: str
@@ -13,4 +11,4 @@ class Category:
         self.description = description
         self.products = products
         Category.count_category += 1
-        Category.count_product +=1
+        Category.count_product += 1

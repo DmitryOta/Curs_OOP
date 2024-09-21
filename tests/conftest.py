@@ -1,8 +1,7 @@
 import pytest
 
-
-from  src.product import Product
-from  src.category import Category
+from src.category import Category
+from src.product import Product
 
 
 @pytest.fixture
@@ -13,7 +12,7 @@ def category_one():
         products=[
             Product(name="Samsung", description="Цвет черный", price=80000.0, quantity=10),
             Product(name="Iphone", description="Цвет белый", price=125000.0, quantity=5),
-        ]
+        ],
     )
 
 
@@ -25,7 +24,7 @@ def category_two():
         products=[
             Product(name="Samsung", description="Цвет зеленый", price=45000.0, quantity=15),
             Product(name="Ipad", description="Цвет серый", price=100000.0, quantity=3),
-        ]
+        ],
     )
 
 
