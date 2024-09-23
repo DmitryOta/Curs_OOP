@@ -1,5 +1,22 @@
+from src.product import Product
+
+
 def test_product(product):
     assert product.name == "Ipad"
     assert product.description == "Цвет серый"
-    assert product.price == 100000.0
+    assert product.price_int == 100000.0
     assert product.quantity == 3
+
+
+def test_product_create():
+    product = Product("Samsung S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
+    product.name = "Samsung S23 Ultra"
+    product.description = "256GB, Серый цвет, 200MP камера"
+    product.price = 180000.0
+    product.quantity = 5
+
+
+def test_price_setter(capsys, product):
+    product.price = 0
+    massage = capsys.readouterr()
+    assert massage.out.strip() == "Цена не должна быть нулевая или отрицательная"
