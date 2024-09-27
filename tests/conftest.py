@@ -2,6 +2,7 @@ import pytest
 
 from src.category import Category
 from src.product import Product
+from src.product_search import ProductSearch
 
 
 @pytest.fixture
@@ -31,3 +32,18 @@ def category_two():
 @pytest.fixture
 def product():
     return Product(name="Ipad", description="Цвет серый", price=100000.0, quantity=3)
+
+
+@pytest.fixture
+def product_one():
+    return Product(name="Ipad Mini", description="Цвет серый", price=90000.0, quantity=7)
+
+
+@pytest.fixture
+def product_two():
+    return Product(name="Ipad Pro", description="Цвет черный", price=150000.0, quantity=10)
+
+
+@pytest.fixture
+def category_iterator(category_one):
+    return ProductSearch(category_one)
