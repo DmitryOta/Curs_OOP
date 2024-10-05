@@ -1,3 +1,6 @@
+import pytest
+
+
 def test_category(category_one, category_two):
     assert category_one.name == "Телефоны"
     assert category_one.description == "Телефон на каждый день"
@@ -8,10 +11,28 @@ def test_category(category_one, category_two):
 
 
 def test_category_get_product_property(category_one):
-    assert category_one.get_product == "Samsung, 80000.0 руб. Остаток: 10 шт.Iphone, 125000.0 руб. Остаток: 5 шт."
+    assert (
+        category_one.get_product == """Samsung, 80000.0 руб. Остаток: 10 шт.\nIphone, 125000.0 руб. Остаток: 5 шт.\n"""
+    )
 
 
 def test_category_get_product_setter(category_one, product):
     assert len(category_one.products_list) == 2
     category_one.get_product = product
     assert len(category_one.products_list) == 3
+
+
+def test_category_str(category_one):
+    assert str(category_one) == "Телефоны, количество продуктов: 15 шт"
+
+
+def test_product_iterator(category_iterator):
+    iter(category_iterator)
+    assert category_iterator.index == 0
+    assert next(category_iterator).name == "Samsung"
+    assert category_iterator.index == 1
+    assert next(category_iterator).name == "Iphone"
+    assert category_iterator.index == 2
+
+    with pytest.raises(StopIteration):
+        next(category_iterator)

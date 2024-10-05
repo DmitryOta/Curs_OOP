@@ -20,3 +20,11 @@ def test_price_setter(capsys, product):
     product.price = 0
     massage = capsys.readouterr()
     assert massage.out.strip() == "Цена не должна быть нулевая или отрицательная"
+
+
+def test_product_str(product):
+    assert str(product) == "Ipad, 100000.0 руб. Остаток: 3 шт."
+
+
+def test_product_add(product_one, product_two):
+    assert product_one + product_two == 2130000.0
